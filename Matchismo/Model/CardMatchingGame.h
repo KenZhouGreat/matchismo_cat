@@ -21,4 +21,9 @@
 -(Card *)cardAtIndex:(NSUInteger)index;
 
 @property (nonatomic, readonly) int score;
+
+@property (strong, nonatomic, readonly)NSString *verbose;
+
 @end
+
+

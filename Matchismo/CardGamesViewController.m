@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *flipsLable;
 @property (nonatomic) int flipCount;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *verboseLabel;
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (strong, nonatomic) CardMatchingGame *game;
@@ -57,6 +58,7 @@
     }
     
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+    self.verboseLabel.text = self.game.verbose;
     
 }
 
