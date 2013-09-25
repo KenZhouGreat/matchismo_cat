@@ -16,6 +16,7 @@
 @property (nonatomic) int flipCount;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *verboseLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *modeChangeSegCtrl;
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (strong, nonatomic) CardMatchingGame *game;
@@ -34,8 +35,26 @@
 }
 
 
+- (IBAction)resetGame:(UIButton *)sender {
+    //reinitialize the game
+    //detroy the game    
+    self.game = nil;
+    //update UI
+    [self updateUI];
+}
 
 
+- (IBAction)gameModeSegament:(UISegmentedControl *)sender {
+    //switch between the 2/3 card match game mode    
+    //reset the card game
+    self.game = nil;
+    //set game mode
+    [self.game setMode:(int) sender.selectedSegmentIndex];
+    //verbose
+    
+    //update UI
+    [self updateUI];
+}
 
 
 
@@ -47,9 +66,10 @@
 
 -(void)updateUI
 {
+    
     for (UIButton *cardButton in self.cardButtons)
     {
-        Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];        
+        Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
         [cardButton setTitle:card.contents forState:UIControlStateSelected];
         [cardButton setTitle:card.contents forState:UIControlStateSelected | UIControlStateDisabled];
         cardButton.selected = card.isFaceUp;
@@ -59,6 +79,8 @@
     
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     self.verboseLabel.text = self.game.verbose;
+    
+    
     
 }
 

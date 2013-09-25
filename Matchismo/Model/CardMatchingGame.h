@@ -20,9 +20,13 @@
 
 -(Card *)cardAtIndex:(NSUInteger)index;
 
+-(void)setMode:(NSUInteger)modeNumber;
+
 @property (nonatomic, readonly) int score;
 
 @property (strong, nonatomic, readonly)NSString *verbose;
+
+
 
 @end
 

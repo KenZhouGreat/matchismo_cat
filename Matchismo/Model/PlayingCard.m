@@ -10,7 +10,10 @@
 
 
 @implementation PlayingCard
-
+- (NSString *)description {
+    NSString *descriptionString = self.contents;
+    return descriptionString;
+}
 
 - (NSString *)contents
 {
