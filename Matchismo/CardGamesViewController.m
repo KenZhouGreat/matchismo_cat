@@ -39,6 +39,7 @@
     //reinitialize the game
     //detroy the game    
     self.game = nil;
+    self.modeChangeSegCtrl.selectedSegmentIndex = 0;
     //update UI
     if (self.modeChangeSegCtrl.enabled == NO) {
         self.modeChangeSegCtrl.enabled = YES;
@@ -64,6 +65,13 @@
 -(void)setCardButtons:(NSArray *)cardButtons
 {
     _cardButtons = cardButtons;
+    UIImage *cardBackImage = [UIImage imageNamed:@"blue_back.png"];
+    
+    for (UIButton *cardButton in self.cardButtons)
+    {
+        [cardButton setTitle:@"" forState:UIControlStateNormal];
+        [cardButton setBackgroundImage:cardBackImage forState:UIControlStateNormal];
+    }
     [self updateUI];
 }
 
@@ -72,9 +80,13 @@
     
     for (UIButton *cardButton in self.cardButtons)
     {
+        UIImage *cardFaceImage = [UIImage imageNamed:@"card_face.png"];
         Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
         [cardButton setTitle:card.contents forState:UIControlStateSelected];
         [cardButton setTitle:card.contents forState:UIControlStateSelected | UIControlStateDisabled];
+        [cardButton setBackgroundImage:cardFaceImage forState:UIControlStateSelected];
+        [cardButton setBackgroundImage:cardFaceImage forState:UIControlStateSelected | UIControlStateDisabled];
+    
         cardButton.selected = card.isFaceUp;
         cardButton.enabled = !card.isUnplayable;
         cardButton.alpha = card.isUnplayable ? 0.3 : 1.0;

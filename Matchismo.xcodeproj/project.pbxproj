@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		320F8FB517F51E8400EDF6FE /* blue_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 320F8FB317F51E8400EDF6FE /* blue_back.png */; };
+		320F8FB617F51E8400EDF6FE /* red_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 320F8FB417F51E8400EDF6FE /* red_back.png */; };
+		320F8FBE17F52E9D00EDF6FE /* card_face.png in Resources */ = {isa = PBXBuildFile; fileRef = 320F8FBD17F52E9D00EDF6FE /* card_face.png */; };
 		32BA7ACC17EA813A0024AD79 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BA7ACB17EA813A0024AD79 /* Card.m */; };
 		32BA7B0217EADC8E0024AD79 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32BA7AD317EACAAD0024AD79 /* SenTestingKit.framework */; };
 		32BA7B0317EADC8E0024AD79 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32FD66FF17E9931900279841 /* UIKit.framework */; };
@@ -41,6 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		320F8FB317F51E8400EDF6FE /* blue_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blue_back.png; path = images/blue_back.png; sourceTree = "<group>"; };
+		320F8FB417F51E8400EDF6FE /* red_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = red_back.png; path = images/red_back.png; sourceTree = "<group>"; };
+		320F8FBD17F52E9D00EDF6FE /* card_face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = card_face.png; path = images/card_face.png; sourceTree = "<group>"; };
 		32BA7ACA17EA813A0024AD79 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Card.h; path = Model/Card.h; sourceTree = "<group>"; };
 		32BA7ACB17EA813A0024AD79 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Card.m; path = Model/Card.m; sourceTree = "<group>"; };
 		32BA7AD317EACAAD0024AD79 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -100,6 +106,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		320F8FB217F51E5B00EDF6FE /* images */ = {
+			isa = PBXGroup;
+			children = (
+				320F8FBD17F52E9D00EDF6FE /* card_face.png */,
+				320F8FB317F51E8400EDF6FE /* blue_back.png */,
+				320F8FB417F51E8400EDF6FE /* red_back.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		32BA7B0517EADC8E0024AD79 /* MatchismoTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +169,7 @@
 		32FD670517E9931900279841 /* Matchismo */ = {
 			isa = PBXGroup;
 			children = (
+				320F8FB217F51E5B00EDF6FE /* images */,
 				32FD671717E9931900279841 /* MainStoryboard.storyboard */,
 				32FD672517EA728600279841 /* Model */,
 				32FD671A17E9931900279841 /* CardGamesViewController.h */,
@@ -275,8 +292,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				320F8FBE17F52E9D00EDF6FE /* card_face.png in Resources */,
+				320F8FB617F51E8400EDF6FE /* red_back.png in Resources */,
 				32FD670A17E9931900279841 /* InfoPlist.strings in Resources */,
 				32FD671217E9931900279841 /* Default.png in Resources */,
+				320F8FB517F51E8400EDF6FE /* blue_back.png in Resources */,
 				32FD671417E9931900279841 /* Default@2x.png in Resources */,
 				32FD671617E9931900279841 /* Default-568h@2x.png in Resources */,
 				32FD671917E9931900279841 /* MainStoryboard.storyboard in Resources */,
