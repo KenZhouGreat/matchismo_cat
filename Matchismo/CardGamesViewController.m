@@ -40,6 +40,9 @@
     //detroy the game    
     self.game = nil;
     //update UI
+    if (self.modeChangeSegCtrl.enabled == NO) {
+        self.modeChangeSegCtrl.enabled = YES;
+    }
     [self updateUI];
 }
 
@@ -93,6 +96,10 @@
 - (IBAction)flipCard:(UIButton *)sender
 {
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
+    if (self.modeChangeSegCtrl.enabled != NO) {
+        self.modeChangeSegCtrl.enabled = NO;
+    }
+    
     self.flipCount++;
     [self updateUI];
 }
