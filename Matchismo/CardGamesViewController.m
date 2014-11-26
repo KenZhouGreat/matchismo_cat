@@ -7,38 +7,79 @@
 //
 
 #import "CardGamesViewController.h"
-#import "PlayingCard.h"
 #import "PlayingCardDeck.h"
 #import "CardMatchingGame.h"
+#import "GameResult.h"
 
-@interface CardGamesViewController ()
+@interface CardGamesViewController () <UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *flipsLable;
 @property (nonatomic) int flipCount;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *verboseLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeChangeSegCtrl;
 
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+@property (strong, nonatomic) IBOutlet UICollectionView *cardCollectionView;
+
 @property (strong, nonatomic) CardMatchingGame *game;
+@property (strong, nonatomic) GameResult *gameResult;
 
 @end
 
 @implementation CardGamesViewController
 
+- (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.startingCardCount;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayingCard" forIndexPath:indexPath];
+    Card *card = [self.game cardAtIndex:indexPath.item];
+    [self updateCell:cell usingCard:card animation:NO];
+    return cell;
+}
+
+-(void)updateCell:(UICollectionViewCell *)cell
+        usingCard:(Card *)card
+        animation:(BOOL)animation
+{
+    //abstarct
+}
+
+-(GameResult *)gameResult
+{
+    if (!_gameResult){
+        _gameResult = [[GameResult alloc] init];
+    }
+    return _gameResult;
+}
 -(CardMatchingGame *)game
 {
     if (!_game){
-        _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
-                                                  usingDeck:[[PlayingCardDeck alloc] init]];
+        _game = [[CardMatchingGame alloc] initWithCardCount:self.startingCardCount
+                                                  usingDeck:[self createDeck]];
     }
     return _game;
 }
+
+-(Deck *)createDeck
+{
+    return nil;
+} //abstract
 
 
 - (IBAction)resetGame:(UIButton *)sender {
     //reinitialize the game
     //detroy the game    
     self.game = nil;
+    self.flipCount = 0;
+    self.gameResult = nil;
     self.modeChangeSegCtrl.selectedSegmentIndex = 0;
     //update UI
     if (self.modeChangeSegCtrl.enabled == NO) {
@@ -62,42 +103,41 @@
 
 
 
--(void)setCardButtons:(NSArray *)cardButtons
-{
-    _cardButtons = cardButtons;
-    UIImage *cardBackImage = [UIImage imageNamed:@"blue_back.png"];
-    
-    for (UIButton *cardButton in self.cardButtons)
-    {
-        [cardButton setTitle:@"" forState:UIControlStateNormal];
-        [cardButton setBackgroundImage:cardBackImage forState:UIControlStateNormal];
-    }
-    [self updateUI];
-}
 
 -(void)updateUI
 {
-    
-    for (UIButton *cardButton in self.cardButtons)
-    {
-        UIImage *cardFaceImage = [UIImage imageNamed:@"card_face.png"];
-        Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
-        [cardButton setTitle:card.contents forState:UIControlStateSelected];
-        [cardButton setTitle:card.contents forState:UIControlStateSelected | UIControlStateDisabled];
-        [cardButton setBackgroundImage:cardFaceImage forState:UIControlStateSelected];
-        [cardButton setBackgroundImage:cardFaceImage forState:UIControlStateSelected | UIControlStateDisabled];
-    
-        cardButton.selected = card.isFaceUp;
-        cardButton.enabled = !card.isUnplayable;
-        cardButton.alpha = card.isUnplayable ? 0.3 : 1.0;
+    for (UICollectionViewCell *cell in [self.cardCollectionView visibleCells]) {
+        NSIndexPath *indexPath = [self.cardCollectionView indexPathForCell:cell];
+        Card *card = [self.game cardAtIndex:indexPath.item];
+
+        [self updateCell:cell usingCard:card animation:NO];
     }
-    
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     self.verboseLabel.text = self.game.verbose;
     
-    
+}
+
+-(void)updateUIWithAnimationAtIndex:(int)index
+{
+    for (UICollectionViewCell *cell in [self.cardCollectionView visibleCells]) {
+        NSIndexPath *indexPath = [self.cardCollectionView indexPathForCell:cell];
+        Card *card = [self.game cardAtIndex:indexPath.item];
+        if (indexPath.item != index) {
+            [self updateCell:cell usingCard:card animation:NO] ;
+        }
+        else{
+            [self updateCell:cell usingCard:card animation:YES];
+        }
+        
+    }
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+    self.verboseLabel.text = self.game.verbose;
     
 }
+
+
+
+
 
 -(void) setFlipCount:(int)flipCount
 {
@@ -105,15 +145,24 @@
     self.flipsLable.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
 }
 
-- (IBAction)flipCard:(UIButton *)sender
+- (IBAction)flipCard:(UITapGestureRecognizer *)gesture
 {
-    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
-    if (self.modeChangeSegCtrl.enabled != NO) {
-        self.modeChangeSegCtrl.enabled = NO;
+    CGPoint tapLocation = [gesture locationInView:self.cardCollectionView];
+    NSIndexPath *indexPath = [self.cardCollectionView indexPathForItemAtPoint:tapLocation];
+    if(indexPath)
+    {
+        int index = indexPath.item;
+        [self.game flipCardAtIndex:index];
+        if (self.modeChangeSegCtrl.enabled != NO) {
+            self.modeChangeSegCtrl.enabled = NO;
+        }
+        
+        self.flipCount++;
+        [self updateUIWithAnimationAtIndex:index];
+        self.gameResult.score = self.game.score;
     }
     
-    self.flipCount++;
-    [self updateUI];
+    
 }
 
 
