@@ -142,6 +142,7 @@
                                 <rect key="frame" x="-2" y="20" width="325" height="353"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -151,6 +152,9 @@
                                 <state key="normal" title="By date">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="sortByDateAction:" destination="uaA-bi-rT7" eventType="touchUpInside" id="sTJ-ZV-ahG"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wid-2O-IAK">
                                 <rect key="frame" x="120" y="387" width="61" height="30"/>
@@ -158,6 +162,9 @@
                                 <state key="normal" title="By score">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="sortByScoreAction:" destination="uaA-bi-rT7" eventType="touchUpInside" id="zWg-Fp-L4M"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Blt-I9-uc2">
                                 <rect key="frame" x="209" y="387" width="79" height="30"/>
@@ -165,6 +172,9 @@
                                 <state key="normal" title="By duration">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="sortByDurationAction:" destination="uaA-bi-rT7" eventType="touchUpInside" id="wFi-r2-vnO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
