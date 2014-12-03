@@ -27,6 +27,12 @@
 
 @implementation CardGamesViewController
 
+- (void) viewDidLoad{
+    [super viewDidLoad];
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:15/255.0 green:112/255.0 blue:49/255.0 alpha:1]];
+}
+
 - (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;

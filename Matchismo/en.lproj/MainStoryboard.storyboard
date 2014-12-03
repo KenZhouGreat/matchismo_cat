@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="nAJ-h4-fdi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="nAJ-h4-fdi">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Playing Card Game View Controller - Game-->
@@ -17,41 +17,37 @@
                                 <rect key="frame" x="12" y="374" width="296" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="LZb-7n-41R">
-                                <rect key="frame" x="165" y="399" width="68" height="29"/>
+                                <rect key="frame" x="126" y="396" width="68" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="2"/>
                                     <segment title="3"/>
                                 </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="gameModeSegament:" destination="2" eventType="valueChanged" id="Yvk-fw-Dsd"/>
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4U0-YO-qtT">
-                                <rect key="frame" x="74" y="392" width="68" height="44"/>
+                                <rect key="frame" x="240" y="392" width="68" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                <state key="normal" title="Deal"/>
+                                <state key="normal" title="Deal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="resetGame:" destination="2" eventType="touchUpInside" id="S3H-Zp-XCf"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RvQ-Th-pl6">
-                                <rect key="frame" x="189" y="403" width="111" height="21"/>
+                                <rect key="frame" x="12" y="403" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Flips: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xKo-v8-ObH">
-                                <rect key="frame" x="6" y="403" width="60" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="UKT-12-Uer">
@@ -91,16 +87,16 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="ml6-NM-25V" appends="YES" id="17t-sd-Mhf"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Game" image="GameIcon.png" id="zsf-JV-8eL"/>
+                    <tabBarItem key="tabBarItem" title="Game" image="gameIcon.png" id="zsf-JV-8eL"/>
                     <connections>
                         <outlet property="cardCollectionView" destination="UKT-12-Uer" id="7wi-Yb-9pM"/>
-                        <outlet property="flipsLable" destination="xKo-v8-ObH" id="Uzk-8c-zfP"/>
                         <outlet property="modeChangeSegCtrl" destination="LZb-7n-41R" id="eUW-EX-uAZ"/>
                         <outlet property="scoreLabel" destination="RvQ-Th-pl6" id="kja-pR-TJW"/>
                         <outlet property="verboseLabel" destination="4ys-gm-ukg" id="dw6-7Z-mr6"/>
@@ -113,7 +109,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-36" y="-685"/>
+            <point key="canvasLocation" x="60" y="-1187"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="cGR-wK-RZf">
@@ -132,7 +128,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oZC-U7-bFY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-444" y="-489"/>
+            <point key="canvasLocation" x="-902" y="-616"/>
         </scene>
         <!--Game Result View Controller - Score-->
         <scene sceneID="6Fh-2f-775">
@@ -145,7 +141,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Score: 25 (2/10/13 19:00, 35s)" selectable="NO" id="qBG-EA-gze">
                                 <rect key="frame" x="-2" y="20" width="325" height="353"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -171,21 +167,22 @@
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Score" image="ScoreIcon.png" id="qVZ-5t-thi"/>
+                    <tabBarItem key="tabBarItem" title="Score" image="dollarIcon.png" id="qVZ-5t-thi"/>
                     <connections>
                         <outlet property="display" destination="qBG-EA-gze" id="kN7-CK-bvr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RhA-qQ-LBV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="39" y="-50"/>
+            <point key="canvasLocation" x="60" y="-44"/>
         </scene>
     </scenes>
     <resources>
-        <image name="GameIcon.png" width="30" height="30"/>
-        <image name="ScoreIcon.png" width="30" height="30"/>
+        <image name="dollarIcon.png" width="30" height="30"/>
+        <image name="gameIcon.png" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

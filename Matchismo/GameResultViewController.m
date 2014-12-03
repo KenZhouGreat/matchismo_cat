@@ -15,15 +15,22 @@
 
 @implementation GameResultViewController
 
+- (void) viewDidLoad{
+    [super viewDidLoad];
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:15/255.0 green:112/255.0 blue:49/255.0 alpha:1]];
+    }
 
 
 
 -(void)updateUI{
     NSString *displayText = @"";
     for (GameResult *result in [GameResult allGameResults]){
-        displayText = [displayText stringByAppendingFormat:@"Score: %d (%@, %0g)\n", result.score, result.start, round(result.duration)];
+        displayText = [displayText stringByAppendingFormat:@"Score: %d \t(%@, \t%0g)\n", result.score, result.start, round(result.duration)];
     }
     self.display.text = displayText;
+    
+    
 }
 
 
@@ -31,6 +38,9 @@
 {
     [super viewWillAppear: animated];
     [self updateUI];
+    
+    [self.display setTextColor:[UIColor whiteColor]];
+
 }
 
 
@@ -51,11 +61,6 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
 
 - (void)didReceiveMemoryWarning
 {
